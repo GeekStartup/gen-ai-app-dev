@@ -10,7 +10,6 @@
 # AUG 10th, 2025
 # HF NO MORE SUPPORT DIRECT HTTP ENDPOINT Invocation - Replacing with InferenceClient()
 
-import requests
 import getpass
 import os
 from huggingface_hub import InferenceClient
@@ -48,8 +47,8 @@ class hf_rest_client:
 
     def invoke(self, query, parameters = {}, options={}):
         messages = [{"role": "user", "content": query}]
-        response = self.inference_client.chat_completion(messages, max_tokens=100)
-        return response.choices[0].message.content
+        response = self.inference_client.chat_completion(messages)
+        return response
         
 
   
